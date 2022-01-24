@@ -23,8 +23,8 @@ img.cube {
 }
 
 img.logo {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 50px;
     padding: 1em;
     float: left;
 }
@@ -33,7 +33,7 @@ header {
     list-style-type: none;
     margin: auto;
     padding: 0;
-    background-color: #607588;
+    background-color: rgb(53, 98, 139);
 }
 
 header ul li {
@@ -51,6 +51,7 @@ header ul li a {
 
 header ul li a:hover {
     cursor: pointer;
+    color: orange;
     text-decoration: underline;
 }
 
@@ -101,13 +102,13 @@ button, main a.btn {
     margin: 12px;
     margin-left: 6%;
     border-radius: 4px;
-    background: #607588;
+    background: rgb(53, 98, 139);
     color: white;
 }
 
-button:hover {
-    background-color: #0B2133;
-    color: white;
+button, main a.btn:hover {
+    background-color: orange;
+    color: #607588;
     cursor: pointer;
 }
 
@@ -177,7 +178,7 @@ input.search {
 }
 
 input[type=submit] {
-    background-color: #545775;
+    background-color: #607588;
     border: none;
     padding: 8px;
     text-align: center;
@@ -192,7 +193,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #718F94;
+    background-color: #4781b8;
     cursor: pointer;
 }
 
@@ -230,7 +231,7 @@ h2{
 }
 
 footer {
-    background: #607588;
+    background: #24435f;
     padding: 1em;
     text-align: center;
     color: white;
