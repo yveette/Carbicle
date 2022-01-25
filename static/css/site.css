@@ -70,6 +70,10 @@ h1 {
     text-transform: uppercase;
 }
 
+.cube {
+    margin: 20px 20px ;
+}
+
 div.cube {
     display: inline-block;
     border: 1px solid #2b415433;
