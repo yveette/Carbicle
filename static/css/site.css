@@ -75,10 +75,11 @@ div.cube {
     border: 1px solid #2b415433;
     background: white;
     vertical-align: top;
+    width: 250px;
 }
 
 div.cube:hover p.name {
-    background: #607588;
+    background: #457eb3;
     color: white;
 }
 
@@ -89,6 +90,7 @@ p.name {
     text-transform: uppercase;
     padding: 10px;
     border-bottom: 1px solid #2b415433;
+    height: 60px;
 }
 
 button, main a.btn {
@@ -108,7 +110,7 @@ button, main a.btn {
 
 button, main a.btn:hover {
     background-color: orange;
-    color: #607588;
+    color: #24435F;
     cursor: pointer;
 }
 
@@ -260,4 +262,22 @@ footer {
     to {
         opacity: 0;
     }
+}
+
+.description{
+    display: none;
+}
+
+.description p {
+    margin: 10px;
+}
+
+.more{
+    background-color: rgb(53, 98, 139);
+    color:  white;
+}
+
+.more:hover{
+    background-color: orange;
+    color: #24435F;
 }

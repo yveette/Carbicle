@@ -16,6 +16,7 @@
 // - [x] details
 // - [x] create
 // - [x] improved home (search)
+// [x] add front-end code
 
 const express = require('express');
 const hbs = require('express-handlebars');
