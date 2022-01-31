@@ -10,6 +10,9 @@
 // - [x] search
 // - [x] edit
 // - [x] delete
+// - [ ] accessory read
+// - [ ] accessory create
+// - [ ] attach accessory
 // implement controllers
 // - [x] home (catalog)
 // - [x] about
@@ -17,11 +20,20 @@
 // - [x] create
 // - [x] improved home (search)
 // - [x] edit
-// - [x] delete
+// - [ ] create accessory
+// - [ ] attach accessory to car
+// - [ ] update details to include accessory
 // [x] add front-end code
+// [ ] add database connection
+// [ ] create Car model
+// [ ] upgrade car service to use Car model
+// [ ] create Accessory model
+
 
 const express = require('express');
 const hbs = require('express-handlebars');
+
+const initDb = require('./models/index');
 
 const carsService = require('./services/cars');
 
@@ -32,37 +44,44 @@ const { details } = require('./controllers/details');
 const { notFound } = require('./controllers/notFound');
 const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
-const app = express();
 
-app.engine('hbs', hbs.create({
-    extname: '.hbs'
-}).engine);
-app.set('view engine', 'hbs'); // render => add '.hbs' to searched file
+start();
 
-app.use(express.urlencoded({ extended: true }));
-app.use('/static', express.static('static'));
-app.use(carsService())
+async function start() {
+    await initDb();
+    
+    const app = express();
 
-app.get('/', home);
-app.get('/about', about);
-app.get('/details/:id', details);
+    app.engine('hbs', hbs.create({
+        extname: '.hbs'
+    }).engine);
+    app.set('view engine', 'hbs'); // render => add '.hbs' to searched file
 
-app.route('/create')
-    .get(create.get)
-    .post(create.post);
-// or:
-// app.get('/create', create.get);
-// app.post('/create', create.post);
+    app.use(express.urlencoded({ extended: true }));
+    app.use('/static', express.static('static'));
+    app.use(carsService())
 
-app.route('/delete/:id')
-    .get(deleteCar.get)
-    .post(deleteCar.post);
+    app.get('/', home);
+    app.get('/about', about);
+    app.get('/details/:id', details);
 
-app.route('/edit/:id')
-    .get(edit.get)
-    .post(edit.post);
+    app.route('/create')
+        .get(create.get)
+        .post(create.post);
+    // or:
+    // app.get('/create', create.get);
+    // app.post('/create', create.post);
 
-app.all('*', notFound);
+    app.route('/delete/:id')
+        .get(deleteCar.get)
+        .post(deleteCar.post);
+
+    app.route('/edit/:id')
+        .get(edit.get)
+        .post(edit.post);
+
+    app.all('*', notFound);
 
 
-app.listen(3000, () => console.log('Server started on port 3000'));
+    app.listen(3000, () => console.log('Server started on port 3000'));
+}
