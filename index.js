@@ -24,9 +24,10 @@
 // - [ ] attach accessory to car
 // - [ ] update details to include accessory
 // [x] add front-end code
-// [ ] add database connection
-// [ ] create Car model
+// [x] add database connection
+// [x] create Car model
 // [ ] upgrade car service to use Car model
+// [ ] add validation rules to Car model
 // [ ] create Accessory model
 
 
@@ -49,7 +50,7 @@ start();
 
 async function start() {
     await initDb();
-    
+
     const app = express();
 
     app.engine('hbs', hbs.create({
