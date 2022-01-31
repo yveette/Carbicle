@@ -26,7 +26,7 @@
 // [x] add front-end code
 // [x] add database connection
 // [x] create Car model
-// [ ] upgrade car service to use Car model
+// [x] upgrade car service to use Car model
 // [ ] add validation rules to Car model
 // [ ] create Accessory model
 

@@ -77,7 +77,7 @@ async function getAll(query) {
     */
 }
 
-async function getById(id) {    
+async function getById(id) {
     const car = await Car.findById(id);
     if (car) {
         return carViewModel(car);
@@ -133,6 +133,16 @@ async function deleteById(id) {
 }
 
 async function updateById(id, car) {
+    await Car.findByIdAndUpdate(id, car);
+
+    /*
+    const existing = await Car.findById(id);
+    existing.name = car.name;
+    // ...
+    await existing.save();
+    */
+
+    /*
     const data = await read();
 
     if (data.hasOwnProperty(id)) {
@@ -141,6 +151,7 @@ async function updateById(id, car) {
     } else {
         throw new ReferenceError('No such ID in database');
     }
+    */
 }
 
 module.exports = () => (req, res, next) => {
