@@ -1,4 +1,5 @@
 const fs = require('fs/promises');
+const Car = require('../models/Car');
 const filePath = './services/data.json';
 
 async function read() {
@@ -22,8 +23,25 @@ async function write(data) {
     }
 }
 
+// Return View Model of a car
+function carViewModel(car) {
+    return {
+        id: car._id,
+        name: car.name,
+        description: car.description,
+        imageUrl: car.imageUrl,
+        price: car.price,
+    }
+}
 
 async function getAll(query) {
+    const cars = await Car.find({});
+    // remove functionality with:
+    // .lean(); 
+    // or View Model :
+    return cars.map(carViewModel);
+
+    /*
     const data = await read();
     let cars = Object
         .entries(data)
@@ -39,9 +57,18 @@ async function getAll(query) {
         cars = cars.filter(c => c.price <= Number(query.to))
     }
     return cars;
+    */
 }
 
 async function getById(id) {
+    const car = await Car.findById(id);
+    if (car) {
+        return carViewModel(car);
+    } else {
+        return undefined;
+    }
+
+    /*
     const data = await read();
     const car = data[id];
 
@@ -50,6 +77,7 @@ async function getById(id) {
     } else {
         return undefined;
     }
+    */
 }
 
 async function createCar(car) {
