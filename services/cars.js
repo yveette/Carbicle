@@ -35,7 +35,24 @@ function carViewModel(car) {
 }
 
 async function getAll(query) {
-    const cars = await Car.find({});
+    const options = {};
+
+    // const cars = await Car.find({name: {$regex: query.search, $options: 'i'}});
+    if (query.search) {
+        options.name = new RegExp(query.search, 'i');
+    }
+    if (query.from) {
+        options.price = { $gte: Number(query.from) };
+    }
+    if (query.to) {
+        if (!options.price) {
+            options.price = {};
+        }
+        options.price.$lte = Number(query.to);
+    }
+
+    console.log(options);
+    const cars = await Car.find(options);
     // remove functionality with:
     // .lean(); 
     // or View Model :
