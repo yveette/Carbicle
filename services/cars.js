@@ -81,6 +81,10 @@ async function getById(id) {
 }
 
 async function createCar(car) {
+    const result = new Car(car);
+    await result.save();
+
+    /*
     const cars = await read();
     let id;
     do {
@@ -89,6 +93,7 @@ async function createCar(car) {
 
     cars[id] = car;
     await write(cars);
+    */
 }
 
 function nextId() {
