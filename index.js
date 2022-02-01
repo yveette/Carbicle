@@ -28,7 +28,7 @@
 // [x] create Car model
 // [x] upgrade car service to use Car model
 // [x] add validation rules to Car model
-// [ ] create Accessory model
+// [x] create Accessory model
 
 
 const express = require('express');
