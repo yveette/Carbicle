@@ -136,7 +136,7 @@ async function updateById(id, car) {
 
     existing.name = car.name;
     existing.description = car.description;
-    existing.imageUrl = car.imageUrl;
+    existing.imageUrl = car.imageUrl || undefined;
     existing.price = car.price;
     
     await existing.save();

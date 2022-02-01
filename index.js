@@ -11,7 +11,7 @@
 // - [x] edit
 // - [x] delete
 // - [ ] accessory read
-// - [ ] accessory create
+// - [x] accessory create
 // - [ ] attach accessory
 // implement controllers
 // - [x] home (catalog)
@@ -20,7 +20,7 @@
 // - [x] create
 // - [x] improved home (search)
 // - [x] edit
-// - [ ] create accessory
+// - [x] create accessory
 // - [ ] attach accessory to car
 // - [ ] update details to include accessory
 // [x] add front-end code
@@ -37,6 +37,7 @@ const hbs = require('express-handlebars');
 const initDb = require('./models/index');
 
 const carsService = require('./services/cars');
+const accessoryService = require('./services/accessory');
 
 const { home } = require('./controllers/home');
 const { about } = require('./controllers/about');
@@ -45,6 +46,7 @@ const { details } = require('./controllers/details');
 const { notFound } = require('./controllers/notFound');
 const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
+const accessory = require('./controllers/accessory');
 
 start();
 
@@ -60,7 +62,8 @@ async function start() {
 
     app.use(express.urlencoded({ extended: true }));
     app.use('/static', express.static('static'));
-    app.use(carsService())
+    app.use(carsService());
+    app.use(accessoryService());
 
     app.get('/', home);
     app.get('/about', about);
@@ -80,6 +83,10 @@ async function start() {
     app.route('/edit/:id')
         .get(edit.get)
         .post(edit.post);
+
+    app.route('/accessory')
+        .get(accessory.get)
+        .post(accessory.post);
 
     app.all('*', notFound);
 
