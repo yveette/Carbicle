@@ -51,7 +51,6 @@ async function getAll(query) {
         options.price.$lte = Number(query.to);
     }
 
-    console.log(options);
     const cars = await Car.find(options);
     // remove functionality with:
     // .lean(); 
@@ -133,14 +132,16 @@ async function deleteById(id) {
 }
 
 async function updateById(id, car) {
-    await Car.findByIdAndUpdate(id, car);
-
-    /*
     const existing = await Car.findById(id);
+
     existing.name = car.name;
-    // ...
+    existing.description = car.description;
+    existing.imageUrl = car.imageUrl;
+    existing.price = car.price;
+    
     await existing.save();
-    */
+    
+    // await Car.findByIdAndUpdate(id, car); // don't use validations
 
     /*
     const data = await read();

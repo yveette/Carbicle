@@ -6,7 +6,7 @@ module.exports = {
         if (car) {
             res.render('edit', { title: `Edit Listing ${car.name}`, car });
         } else {
-            res.redirect('404');
+            res.redirect('/404');
         }
     },
     async post(req, res) {
@@ -22,7 +22,8 @@ module.exports = {
             await req.storage.updateById(id, car);
             res.redirect('/');
         } catch (err) {
-            res.redirect('404');
+            console.log(err.message);
+            res.redirect('/404');
         }
     }
 }
