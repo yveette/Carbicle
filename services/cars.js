@@ -31,6 +31,7 @@ function carViewModel(car) {
         description: car.description,
         imageUrl: car.imageUrl,
         price: car.price,
+        accessories: car.accessories,
     }
 }
 
@@ -138,9 +139,10 @@ async function updateById(id, car) {
     existing.description = car.description;
     existing.imageUrl = car.imageUrl || undefined;
     existing.price = car.price;
-    
+    existing.accessories = car.accessories;
+
     await existing.save();
-    
+
     // await Car.findByIdAndUpdate(id, car); // don't use validations
 
     /*
@@ -155,13 +157,21 @@ async function updateById(id, car) {
     */
 }
 
+async function attachAccessory(carId, accessoryId) {
+    const existing = await Car.findById(carId);
+    existing.accessories.push(accessoryId);
+
+    await existing.save();
+}
+
 module.exports = () => (req, res, next) => {
     req.storage = {
         getAll,
         getById,
         createCar,
         updateById,
-        deleteById
+        deleteById,
+        attachAccessory
     };
     next();
 }

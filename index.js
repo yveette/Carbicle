@@ -47,6 +47,7 @@ const { notFound } = require('./controllers/notFound');
 const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
 const accessory = require('./controllers/accessory');
+const attach = require('./controllers/attach');
 
 start();
 
@@ -87,6 +88,10 @@ async function start() {
     app.route('/accessory')
         .get(accessory.get)
         .post(accessory.post);
+
+    app.route('/attach/:id')
+        .get(attach.get)
+        .post(attach.post);
 
     app.all('*', notFound);
 

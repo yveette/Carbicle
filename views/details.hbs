@@ -1,12 +1,35 @@
 {{#with car}}
 <h1>{{name}}</h1>
-<img class="cube"
-  src="/static/assets/{{imageUrl}}">
+<img class="cube" src="/static/assets/{{imageUrl}}">
 <div class="details">
   <p><span>Description:</span> {{description}}</p>
   <p><span>Price:</span> {{price}}</p>
   <a class="btn" href="/">Back</a>
+  <a class="btn" href="/attach/{{id}}">Attach Accessory</a>
   <a class="btn" href="/edit/{{id}}">Edit</a>
   <a class="btn" href="/delete/{{id}}">Delete</a>
 </div>
+
+{{#if accessory}}
+<h2>Accessories</h2>
+<div class="accessories">
+  <div class="accessory">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/61J8UP8pySL._SX425_.jpg" alt="stickerName">
+    <h3>Accessory Name</h3>
+    <p>Accessory Description</p>
+  </div>
+  <div class="accessory">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/61J8UP8pySL._SX425_.jpg" alt="stickerName">
+    <h3>Accessory Name</h3>
+    <p>Accessory Description</p>
+  </div>
+  <div class="accessory">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/61J8UP8pySL._SX425_.jpg" alt="stickerName">
+    <h3>Accessory Name</h3>
+    <p>Accessory Description</p>
+  </div>
+  <h3 class="italic">This cube has no accessories yet...</h3>
+</div>
+{{/if}}
+
 {{/with}}
