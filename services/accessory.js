@@ -1,18 +1,9 @@
 const Accessoty = require('../models/Accessory');
-
-function mapToViewModel(accessory) {
-    return {
-        id: accessory._id,
-        name: accessory.name,
-        description: accessory.description,
-        imageUrl: accessory.imageUrl,
-        price: accessory.price,
-    }
-}
+const { accessoryViewModel } = require('./util');
 
 async function getAll() {
     const data = await Accessoty.find({});
-    return data.map(mapToViewModel);
+    return data.map(accessoryViewModel);
 }
 
 async function createAccessory(accessory) {

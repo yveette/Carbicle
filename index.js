@@ -10,9 +10,9 @@
 // - [x] search
 // - [x] edit
 // - [x] delete
-// - [ ] accessory read
+// - [x] accessory read
 // - [x] accessory create
-// - [ ] attach accessory
+// - [x] attach accessory
 // implement controllers
 // - [x] home (catalog)
 // - [x] about
@@ -21,7 +21,7 @@
 // - [x] improved home (search)
 // - [x] edit
 // - [x] create accessory
-// - [ ] attach accessory to car
+// - [x] attach accessory to car
 // - [ ] update details to include accessory
 // [x] add front-end code
 // [x] add database connection
