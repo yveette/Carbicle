@@ -22,7 +22,7 @@
 // - [x] edit
 // - [x] create accessory
 // - [x] attach accessory to car
-// - [ ] update details to include accessory
+// - [x] update details to include accessory
 // [x] add front-end code
 // [x] add database connection
 // [x] create Car model
