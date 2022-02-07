@@ -47,6 +47,7 @@ const initDb = require('./models/index');
 
 const carsService = require('./services/cars');
 const accessoryService = require('./services/accessory');
+const authService = require('./services/auth');
 
 const { home } = require('./controllers/home');
 const { about } = require('./controllers/about');
@@ -75,6 +76,7 @@ async function start() {
     app.use('/static', express.static('static'));
     app.use(carsService());
     app.use(accessoryService());
+    app.use(authService());
 
     app.get('/', home);
     app.get('/about', about);
