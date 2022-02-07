@@ -35,6 +35,7 @@
 // [x] upgrade car service to use Car model
 // [x] add validation rules to Car model
 // [x] create Accessory model
+// [ ] add session middleware and auth libraries
 // [ ] create user model
 // [ ] add owner property to Car, Accessory models
 
@@ -56,6 +57,7 @@ const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
 const accessory = require('./controllers/accessory');
 const attach = require('./controllers/attach');
+const { registerGet, registerPost, loginGet, loginPost, logoutGet } = require('./controllers/auth');
 
 start();
 
@@ -100,6 +102,17 @@ async function start() {
     app.route('/attach/:id')
         .get(attach.get)
         .post(attach.post);
+
+    app.route('/register')
+        .get(registerGet)
+        .post(registerPost);
+
+    app.route('/login')
+        .get(loginGet)
+        .post(loginPost);
+
+    app.route('/logout')
+        .get(logoutGet);
 
     app.all('*', notFound);
 
