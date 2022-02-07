@@ -13,6 +13,10 @@
 // - [x] accessory read
 // - [x] accessory create
 // - [x] attach accessory
+// - [ ] register user
+// - [ ] login user
+// - [ ] logout user
+// - [ ] add authorization checks to data modification
 // implement controllers
 // - [x] home (catalog)
 // - [x] about
@@ -23,12 +27,16 @@
 // - [x] create accessory
 // - [x] attach accessory to car
 // - [x] update details to include accessory
+// - [ ] auth controller with login, register, logout actions
+// - [ ] protect routes
 // [x] add front-end code
 // [x] add database connection
 // [x] create Car model
 // [x] upgrade car service to use Car model
 // [x] add validation rules to Car model
 // [x] create Accessory model
+// [ ] create user model
+// [ ] add owner property to Car, Accessory models
 
 
 const express = require('express');

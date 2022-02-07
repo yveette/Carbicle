@@ -25,7 +25,9 @@ async function write(data) {
 }
 
 async function getAll(query) {
-    const options = {};
+    const options = {
+        isDeleted: false
+    };
 
     // const cars = await Car.find({name: {$regex: query.search, $options: 'i'}});
     if (query.search) {
@@ -67,7 +69,7 @@ async function getAll(query) {
 }
 
 async function getById(id) {
-    const car = await Car.findById(id).populate('accessories');
+    const car = await Car.findById(id).where({ isDeleted: false }).populate('accessories');
     if (car) {
         return carViewModel(car);
     } else {
@@ -107,7 +109,9 @@ function nextId() {
 }
 
 async function deleteById(id) {
-    await Car.findByIdAndDelete(id);
+    await Car.findByIdAndUpdate(id, { isDeleted: true });
+
+    // await Car.findByIdAndDelete(id);
 
     /*
     const data = await read();
@@ -122,7 +126,7 @@ async function deleteById(id) {
 }
 
 async function updateById(id, car) {
-    const existing = await Car.findById(id);
+    const existing = await Car.findById(id).where({ isDeleted: false });
 
     existing.name = car.name;
     existing.description = car.description;
