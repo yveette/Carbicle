@@ -42,6 +42,7 @@
 
 const express = require('express');
 const hbs = require('express-handlebars');
+const session = require('express-session');
 
 const initDb = require('./models/index');
 
@@ -72,6 +73,12 @@ async function start() {
     }).engine);
     app.set('view engine', 'hbs'); // render => add '.hbs' to searched file
 
+    app.use(session({
+        secret: 'my super duper secret',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: 'auto' }
+    }))
     app.use(express.urlencoded({ extended: true }));
     app.use('/static', express.static('static'));
     app.use(carsService());
