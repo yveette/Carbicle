@@ -15,7 +15,7 @@
 // - [x] attach accessory
 // - [x] register user
 // - [x] login user
-// - [ ] logout user
+// - [x] logout user
 // - [ ] add authorization checks to data modification
 // implement controllers
 // - [x] home (catalog)
@@ -27,7 +27,7 @@
 // - [x] create accessory
 // - [x] attach accessory to car
 // - [x] update details to include accessory
-// - [ ] auth controller with login, register, logout actions
+// - [x] auth controller with login, register, logout actions
 // - [ ] protect routes
 // [x] add front-end code
 // [x] add database connection
@@ -59,7 +59,7 @@ const edit = require('./controllers/edit');
 const deleteCar = require('./controllers/delete');
 const accessory = require('./controllers/accessory');
 const attach = require('./controllers/attach');
-const { registerGet, registerPost, loginGet, loginPost, logoutGet } = require('./controllers/auth');
+const { registerGet, registerPost, loginGet, loginPost, logout } = require('./controllers/auth');
 
 start();
 
@@ -120,8 +120,7 @@ async function start() {
         .get(loginGet)
         .post(loginPost);
 
-    app.route('/logout')
-        .get(logoutGet);
+    app.get('/logout', logout);
 
     app.all('*', notFound);
 

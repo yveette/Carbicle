@@ -33,7 +33,8 @@ module.exports = {
         }
         res.redirect('/');
     },
-    logoutGet(req, res) {
-
+    logout(req, res) {
+        req.auth.logout();
+        res.redirect('/');
     },
 }
