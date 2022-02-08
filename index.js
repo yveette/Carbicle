@@ -13,8 +13,8 @@
 // - [x] accessory read
 // - [x] accessory create
 // - [x] attach accessory
-// - [ ] register user
-// - [ ] login user
+// - [x] register user
+// - [x] login user
 // - [ ] logout user
 // - [ ] add authorization checks to data modification
 // implement controllers
@@ -35,8 +35,8 @@
 // [x] upgrade car service to use Car model
 // [x] add validation rules to Car model
 // [x] create Accessory model
-// [ ] add session middleware and auth libraries
-// [ ] create user model
+// [x] add session middleware and auth libraries
+// [x] create user model
 // [ ] add owner property to Car, Accessory models
 
 
