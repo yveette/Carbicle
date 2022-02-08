@@ -37,7 +37,7 @@
 // [x] create Accessory model
 // [x] add session middleware and auth libraries
 // [x] create user model
-// [ ] add owner property to Car, Accessory models
+// [x] add owner property to Car, Accessory models
 
 
 const express = require('express');
