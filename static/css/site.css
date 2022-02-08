@@ -112,6 +112,10 @@ button, main a.btn {
     color: white;
 }
 
+.details a.btn{
+    width: 28%;
+}
+
 button, main a.btn:hover {
     background-color: orange;
     color: #24435F;

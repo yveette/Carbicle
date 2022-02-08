@@ -108,8 +108,15 @@ function nextId() {
     return 'xxxxxxxx-xxxx'.replace(/x/g, () => (Math.random() * 16 | 0).toString(16));
 }
 
-async function deleteById(id) {
+async function deleteById(id, ownerId) {
+    const existing = await Car.findById(id).where({ isDeleted: false });
+
+    if (existing.owner != ownerId) {
+        return false;
+    }
+
     await Car.findByIdAndUpdate(id, { isDeleted: true });
+    return true;
 
     // await Car.findByIdAndDelete(id);
 
@@ -125,8 +132,12 @@ async function deleteById(id) {
     */
 }
 
-async function updateById(id, car) {
+async function updateById(id, car, ownerId) {
     const existing = await Car.findById(id).where({ isDeleted: false });
+
+    if (existing.owner != ownerId) {
+        return false;
+    }
 
     existing.name = car.name;
     existing.description = car.description;
@@ -135,6 +146,7 @@ async function updateById(id, car) {
     existing.accessories = car.accessories;
 
     await existing.save();
+    return true;
 
     // await Car.findByIdAndUpdate(id, car); // don't use validations
 
@@ -150,8 +162,11 @@ async function updateById(id, car) {
     */
 }
 
-async function attachAccessory(carId, accessoryId) {
+async function attachAccessory(carId, accessoryId, ownerId) {
     const existing = await Car.findById(carId);
+    if (existing.owner != ownerId) {
+        return false;
+    }
     existing.accessories.push(accessoryId);
 
     await existing.save();
